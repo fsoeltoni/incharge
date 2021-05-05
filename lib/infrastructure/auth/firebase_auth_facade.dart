@@ -3,7 +3,9 @@ import 'package:incharge/domain/auth/auth_failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:incharge/domain/auth/i_auth_facade.dart';
 import 'package:incharge/domain/auth/value_object.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
 

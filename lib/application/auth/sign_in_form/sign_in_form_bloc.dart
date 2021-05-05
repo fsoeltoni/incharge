@@ -7,11 +7,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:incharge/domain/auth/auth_failures.dart';
 import 'package:incharge/domain/auth/i_auth_facade.dart';
 import 'package:incharge/domain/auth/value_object.dart';
+import 'package:injectable/injectable.dart';
 
 part 'sign_in_form_event.dart';
 part 'sign_in_form_state.dart';
 part 'sign_in_form_bloc.freezed.dart';
 
+@injectable
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   final IAuthFacade _authFacade;
 
