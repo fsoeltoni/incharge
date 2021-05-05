@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:incharge/presentation/sign_in/sign_in_page.dart';
 
 class Incharge extends StatelessWidget {
   const Incharge() : super();
@@ -7,9 +8,7 @@ class Incharge extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: Scaffold(
-        body: Center(
-          child: Text("INCHARGE"),
-        ),
+        body: SignInPage(),
       ),
     );
   }
