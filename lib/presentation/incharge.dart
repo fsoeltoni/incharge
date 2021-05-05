@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:incharge/application/auth/auth_bloc.dart';
 import 'package:incharge/injection.dart';
-import 'package:incharge/presentation/sign_in/sign_in_page.dart';
+import 'package:incharge/presentation/router/app_router.gr.dart';
 
 class Incharge extends StatelessWidget {
   const Incharge() : super();
@@ -16,10 +16,9 @@ class Incharge extends StatelessWidget {
               getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
         )
       ],
-      child: const MaterialApp(
-        home: Scaffold(
-          body: SignInPage(),
-        ),
+      child: MaterialApp.router(
+        routerDelegate: getIt<AppRouter>().delegate(),
+        routeInformationParser: getIt<AppRouter>().defaultRouteParser(),
       ),
     );
   }
