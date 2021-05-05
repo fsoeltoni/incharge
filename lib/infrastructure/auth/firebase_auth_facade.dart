@@ -1,9 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:incharge/domain/auth/auth_failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:incharge/domain/auth/i_auth_facade.dart';
+import 'package:incharge/domain/auth/user.dart';
 import 'package:incharge/domain/auth/value_object.dart';
 import 'package:injectable/injectable.dart';
+import './firebase_user_mapper.dart';
 
 @LazySingleton(as: IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {
@@ -54,4 +56,13 @@ class FirebaseAuthFacade implements IAuthFacade {
       }
     }
   }
+
+  @override
+  Future<Option<User>> getSignedInUser() async =>
+      optionOf(_firebaseAuth.currentUser?.toDomain());
+
+  @override
+  Future<void> signOut() => Future.wait([
+        _firebaseAuth.signOut(),
+      ]);
 }
